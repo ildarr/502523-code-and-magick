@@ -15,7 +15,7 @@ window.renderStatistics = function (ctx, names, times) {
 
   var max = -1;
 
-  for (var i = 0 ; i < times.length; i++) {
+  for (var i = 0; i < times.length; i++) {
     var time = times[i];
     if (time > max) {
       max = time;
@@ -30,7 +30,7 @@ window.renderStatistics = function (ctx, names, times) {
   var initialY = 240;
   var lineHeight = 18;
 
-  for(var i = 0; i < times.length; i++) {
+  for (i = 0; i < times.length; i++) {
     ctx.fillStyle = (names[i] === 'Вы') ? 'rgba(255, 0, 0, 1)' : 'rgba(0, 0, 255, ' + Math.random() + ')';
     ctx.fillRect(initialX + (barWidth + indent) * i, initialY - times[i] * step, barWidth, times[i] * step);
     ctx.fillStyle = 'rgba(0, 0, 0, 1)';
