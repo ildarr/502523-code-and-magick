@@ -22,14 +22,16 @@ window.renderStatistics = function (ctx, names, times) {
       }
     }
     return max;
-  }
+  };
+
   var histogramheight = 150;
-  var step = histogramheight / maximum ();
+  var step = histogramheight / maximum();
   var barWidth = 40;
   var indent = 50;
   var initialX = 140;
   var initialY = 240;
   var lineHeight = 18;
+
   var playerScore = function (count) {
     return ctx.fillText(names[count], initialX + (barWidth + indent) * count, initialY + lineHeight);
   };
@@ -41,7 +43,7 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillStyle = (names[i] === 'Вы') ? 'rgba(255, 0, 0, 1)' : 'rgba(0, 0, 255, ' + Math.random() + ')';
     ctx.fillRect(initialX + (barWidth + indent) * i, initialY - times[i] * step, barWidth, times[i] * step);
     ctx.fillStyle = 'rgba(0, 0, 0, 1)';
-    playerScore (i);
-    playerName (i);
+    playerScore(i);
+    playerName(i);
   }
 };
