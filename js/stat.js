@@ -13,7 +13,7 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Ура вы победили!', 120, 40);
   ctx.fillText('Список результатов:', 120, 60);
 
-  var maximum = function () {
+  var getMaximumTime = function () {
     var max = -1;
     for (var i = 0; i < times.length; i++) {
       var time = times[i];
@@ -25,17 +25,17 @@ window.renderStatistics = function (ctx, names, times) {
   };
 
   var histogramheight = 150;
-  var step = histogramheight / maximum();
+  var step = histogramheight / getMaximumTime();
   var barWidth = 40;
   var indent = 50;
   var initialX = 140;
   var initialY = 240;
   var lineHeight = 18;
 
-  var playerName = function (count) {
+  var getPlayerName = function (count) {
     return ctx.fillText(names[count], initialX + (barWidth + indent) * count, initialY + lineHeight);
   };
-  var playerTime = function (count) {
+  var getPlayerTime = function (count) {
     return ctx.fillText(Math.round(times[count]), initialX + (barWidth + indent) * count, initialY - times[count] * step - lineHeight / 2);
   };
 
@@ -43,7 +43,7 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillStyle = (names[i] === 'Вы') ? 'rgba(255, 0, 0, 1)' : 'rgba(0, 0, 255, ' + Math.random() + ')';
     ctx.fillRect(initialX + (barWidth + indent) * i, initialY - times[i] * step, barWidth, times[i] * step);
     ctx.fillStyle = 'rgba(0, 0, 0, 1)';
-    playerName(i);
-    playerTime(i);
+    getPlayerName(i);
+    getPlayerTime(i);
   }
 };
